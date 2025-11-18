@@ -1,0 +1,693 @@
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"init.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/init.c"
+  20              		.section	.text.GPIO_init__Memory,"ax",%progbits
+  21              		.align	1
+  22              		.global	GPIO_init__Memory
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	GPIO_init__Memory:
+  28              	.LFB130:
+   1:Core/Src/init.c **** 
+   2:Core/Src/init.c **** #include "main.h"
+   3:Core/Src/init.c **** 
+   4:Core/Src/init.c **** void GPIO_init__Memory(void){};
+  29              		.loc 1 4 29 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              		.loc 1 4 30 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE130:
+  39              		.section	.text.GPIO_init_With_Myself_Macros,"ax",%progbits
+  40              		.align	1
+  41              		.global	GPIO_init_With_Myself_Macros
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	GPIO_init_With_Myself_Macros:
+  47              	.LFB131:
+   5:Core/Src/init.c **** 
+   6:Core/Src/init.c **** // Здесь должно быть включение через регистры (хардкод)
+   7:Core/Src/init.c **** void GPIO_init_With_Myself_Macros (void)
+   8:Core/Src/init.c **** {
+  48              		.loc 1 8 1 view -0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 2
+
+
+   9:Core/Src/init.c ****     RCC_AHB1ENR |= RCC_GPIOA_EN | RCC_GPIOB_EN | RCC_GPIOC_EN;
+  53              		.loc 1 9 5 view .LVU3
+  54 0000 0D4A     		ldr	r2, .L3
+  55 0002 D2F83038 		ldr	r3, [r2, #2096]
+  56              		.loc 1 9 17 is_stmt 0 view .LVU4
+  57 0006 43F00703 		orr	r3, r3, #7
+  58 000a C2F83038 		str	r3, [r2, #2096]
+  10:Core/Src/init.c ****     BIT_SET(GPIOB_MODER, GPIO_PIN_OUT_7);
+  59              		.loc 1 10 5 is_stmt 1 view .LVU5
+  60 000e 0B4B     		ldr	r3, .L3+4
+  61 0010 D3F80024 		ldr	r2, [r3, #1024]
+  62 0014 42F48042 		orr	r2, r2, #16384
+  63 0018 C3F80024 		str	r2, [r3, #1024]
+  11:Core/Src/init.c ****     BIT_SET(GPIOB_OTYPER, GPIO_OFF);
+  64              		.loc 1 11 5 view .LVU6
+  12:Core/Src/init.c ****     BIT_SET(GPIOB_OSPEEDR, GPIO_PIN_MED_7);
+  65              		.loc 1 12 5 view .LVU7
+  66 001c D3F80824 		ldr	r2, [r3, #1032]
+  67 0020 42F48042 		orr	r2, r2, #16384
+  68 0024 C3F80824 		str	r2, [r3, #1032]
+  13:Core/Src/init.c ****     BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7);
+  69              		.loc 1 13 5 view .LVU8
+  70 0028 D3F81824 		ldr	r2, [r3, #1048]
+  71 002c 42F40002 		orr	r2, r2, #8388608
+  72 0030 C3F81824 		str	r2, [r3, #1048]
+  14:Core/Src/init.c **** }
+  73              		.loc 1 14 1 is_stmt 0 view .LVU9
+  74 0034 7047     		bx	lr
+  75              	.L4:
+  76 0036 00BF     		.align	2
+  77              	.L3:
+  78 0038 00300240 		.word	1073885184
+  79 003c 00000240 		.word	1073872896
+  80              		.cfi_endproc
+  81              	.LFE131:
+  83              		.section	.text.GPIO_init_With_Myself_Macros2,"ax",%progbits
+  84              		.align	1
+  85              		.global	GPIO_init_With_Myself_Macros2
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  90              	GPIO_init_With_Myself_Macros2:
+  91              	.LFB132:
+  15:Core/Src/init.c **** 
+  16:Core/Src/init.c **** // Включение через макроссы красный светодиот
+  17:Core/Src/init.c **** void GPIO_init_With_Myself_Macros2 (void)
+  18:Core/Src/init.c **** {
+  92              		.loc 1 18 1 is_stmt 1 view -0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  19:Core/Src/init.c ****     RCC_AHB1ENR |= RCC_GPIOA_EN | RCC_GPIOB_EN | RCC_GPIOC_EN;
+  97              		.loc 1 19 5 view .LVU11
+  98 0000 0D4A     		ldr	r2, .L6
+  99 0002 D2F83038 		ldr	r3, [r2, #2096]
+ 100              		.loc 1 19 17 is_stmt 0 view .LVU12
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 3
+
+
+ 101 0006 43F00703 		orr	r3, r3, #7
+ 102 000a C2F83038 		str	r3, [r2, #2096]
+  20:Core/Src/init.c ****     BIT_SET(GPIOB_MODER, GPIO_PIN_OUT_14);
+ 103              		.loc 1 20 5 is_stmt 1 view .LVU13
+ 104 000e 0B4B     		ldr	r3, .L6+4
+ 105 0010 D3F80024 		ldr	r2, [r3, #1024]
+ 106 0014 42F08052 		orr	r2, r2, #268435456
+ 107 0018 C3F80024 		str	r2, [r3, #1024]
+  21:Core/Src/init.c ****     BIT_SET(GPIOB_OTYPER, GPIO_OFF);
+ 108              		.loc 1 21 5 view .LVU14
+  22:Core/Src/init.c ****     BIT_SET(GPIOB_OSPEEDR, GPIO_PIN_MED_14);
+ 109              		.loc 1 22 5 view .LVU15
+ 110 001c D3F80824 		ldr	r2, [r3, #1032]
+ 111 0020 42F08052 		orr	r2, r2, #268435456
+ 112 0024 C3F80824 		str	r2, [r3, #1032]
+  23:Core/Src/init.c ****     BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14);
+ 113              		.loc 1 23 5 view .LVU16
+ 114 0028 D3F81824 		ldr	r2, [r3, #1048]
+ 115 002c 42F08042 		orr	r2, r2, #1073741824
+ 116 0030 C3F81824 		str	r2, [r3, #1048]
+  24:Core/Src/init.c **** }
+ 117              		.loc 1 24 1 is_stmt 0 view .LVU17
+ 118 0034 7047     		bx	lr
+ 119              	.L7:
+ 120 0036 00BF     		.align	2
+ 121              	.L6:
+ 122 0038 00300240 		.word	1073885184
+ 123 003c 00000240 		.word	1073872896
+ 124              		.cfi_endproc
+ 125              	.LFE132:
+ 127              		.section	.text.GPIO_init_With_Myself_Macros3,"ax",%progbits
+ 128              		.align	1
+ 129              		.global	GPIO_init_With_Myself_Macros3
+ 130              		.syntax unified
+ 131              		.thumb
+ 132              		.thumb_func
+ 134              	GPIO_init_With_Myself_Macros3:
+ 135              	.LFB133:
+  25:Core/Src/init.c **** 
+  26:Core/Src/init.c **** // Подключение портов PA3, РС0 и РС3
+  27:Core/Src/init.c **** void GPIO_init_With_Myself_Macros3 (void)
+  28:Core/Src/init.c **** {
+ 136              		.loc 1 28 1 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+  29:Core/Src/init.c ****     RCC_AHB1ENR |= RCC_GPIOA_EN | RCC_GPIOB_EN | RCC_GPIOC_EN;
+ 141              		.loc 1 29 5 view .LVU19
+ 142 0000 0E4A     		ldr	r2, .L9
+ 143 0002 D2F83038 		ldr	r3, [r2, #2096]
+ 144              		.loc 1 29 17 is_stmt 0 view .LVU20
+ 145 0006 43F00703 		orr	r3, r3, #7
+ 146 000a C2F83038 		str	r3, [r2, #2096]
+  30:Core/Src/init.c ****     // PA3
+  31:Core/Src/init.c ****     BIT_SET(GPIOA_MODER, GPIO_PIN_IN_3);
+ 147              		.loc 1 31 5 is_stmt 1 view .LVU21
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 4
+
+
+  32:Core/Src/init.c ****     BIT_SET(GPIOA_OTYPER, GPIO_OFF);
+ 148              		.loc 1 32 5 view .LVU22
+  33:Core/Src/init.c ****     BIT_SET(GPIOA_OSPEEDR, GPIO_PIN_MED_3);
+ 149              		.loc 1 33 5 view .LVU23
+ 150 000e 0C4B     		ldr	r3, .L9+4
+ 151 0010 9A68     		ldr	r2, [r3, #8]
+ 152 0012 42F48042 		orr	r2, r2, #16384
+ 153 0016 9A60     		str	r2, [r3, #8]
+  34:Core/Src/init.c ****     BIT_SET(GPIOA_BSRR, GPIO_PIN_RESET_3);
+ 154              		.loc 1 34 5 view .LVU24
+ 155 0018 9A69     		ldr	r2, [r3, #24]
+ 156 001a 42F40022 		orr	r2, r2, #524288
+ 157 001e 9A61     		str	r2, [r3, #24]
+  35:Core/Src/init.c **** 
+  36:Core/Src/init.c ****     //PC0 A1
+  37:Core/Src/init.c **** /*     BIT_SET(GPIOC_MODER, GPIO_PIN_IN_0);
+  38:Core/Src/init.c ****     BIT_SET(GPIOC_OTYPER, GPIO_OFF);
+  39:Core/Src/init.c ****     BIT_SET(GPIOC_OSPEEDR, GPIO_PIN_MED_0);
+  40:Core/Src/init.c ****     BIT_SET(GPIOC_BSRR, GPIO_PIN_RESET_0); */
+  41:Core/Src/init.c **** 
+  42:Core/Src/init.c ****     //PC3
+  43:Core/Src/init.c ****     BIT_SET(GPIOC_MODER, GPIO_PIN_IN_3);
+ 158              		.loc 1 43 5 view .LVU25
+  44:Core/Src/init.c ****     BIT_SET(GPIOC_OSPEEDR, GPIO_PIN_MED_3);
+ 159              		.loc 1 44 5 view .LVU26
+ 160 0020 D3F80828 		ldr	r2, [r3, #2056]
+ 161 0024 42F48042 		orr	r2, r2, #16384
+ 162 0028 C3F80828 		str	r2, [r3, #2056]
+  45:Core/Src/init.c ****     BIT_SET(GPIOC_BSRR, GPIO_PIN_RESET_3);
+ 163              		.loc 1 45 5 view .LVU27
+ 164 002c D3F81828 		ldr	r2, [r3, #2072]
+ 165 0030 42F40022 		orr	r2, r2, #524288
+ 166 0034 C3F81828 		str	r2, [r3, #2072]
+  46:Core/Src/init.c **** }
+ 167              		.loc 1 46 1 is_stmt 0 view .LVU28
+ 168 0038 7047     		bx	lr
+ 169              	.L10:
+ 170 003a 00BF     		.align	2
+ 171              	.L9:
+ 172 003c 00300240 		.word	1073885184
+ 173 0040 00000240 		.word	1073872896
+ 174              		.cfi_endproc
+ 175              	.LFE133:
+ 177              		.section	.text.GPIO_init_CMSIS,"ax",%progbits
+ 178              		.align	1
+ 179              		.global	GPIO_init_CMSIS
+ 180              		.syntax unified
+ 181              		.thumb
+ 182              		.thumb_func
+ 184              	GPIO_init_CMSIS:
+ 185              	.LFB134:
+  47:Core/Src/init.c **** 
+  48:Core/Src/init.c **** // Включение через библиотеку зеленый светодиот
+  49:Core/Src/init.c **** void GPIO_init_CMSIS(void)
+  50:Core/Src/init.c **** {
+ 186              		.loc 1 50 1 is_stmt 1 view -0
+ 187              		.cfi_startproc
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 5
+
+
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190              		@ link register save eliminated.
+  51:Core/Src/init.c ****     SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOBEN | RCC_AHB1ENR_GPIOCEN | RCC_AHB1ENR_GPIOFEN);
+ 191              		.loc 1 51 5 view .LVU30
+ 192 0000 274A     		ldr	r2, .L12
+ 193 0002 136B     		ldr	r3, [r2, #48]
+ 194 0004 43F02603 		orr	r3, r3, #38
+ 195 0008 1363     		str	r3, [r2, #48]
+  52:Core/Src/init.c **** 
+  53:Core/Src/init.c ****     SET_BIT(GPIOB->MODER, GPIO_MODER_MODER0_0);
+ 196              		.loc 1 53 5 view .LVU31
+ 197 000a 264B     		ldr	r3, .L12+4
+ 198 000c 1A68     		ldr	r2, [r3]
+ 199 000e 42F00102 		orr	r2, r2, #1
+ 200 0012 1A60     		str	r2, [r3]
+  54:Core/Src/init.c ****     SET_BIT(GPIOB->OSPEEDR, GPIO_OSPEEDR_OSPEED0_0);
+ 201              		.loc 1 54 5 view .LVU32
+ 202 0014 9A68     		ldr	r2, [r3, #8]
+ 203 0016 42F00102 		orr	r2, r2, #1
+ 204 001a 9A60     		str	r2, [r3, #8]
+  55:Core/Src/init.c ****    
+  56:Core/Src/init.c **** 
+  57:Core/Src/init.c ****     //PA5
+  58:Core/Src/init.c ****     SET_BIT(GPIOA->MODER, GPIO_MODER_MODER5_0);
+ 205              		.loc 1 58 5 view .LVU33
+ 206 001c A3F58063 		sub	r3, r3, #1024
+ 207 0020 1A68     		ldr	r2, [r3]
+ 208 0022 42F48062 		orr	r2, r2, #1024
+ 209 0026 1A60     		str	r2, [r3]
+  59:Core/Src/init.c ****     SET_BIT(GPIOA->OSPEEDR, GPIO_OSPEEDR_OSPEED5_0);
+ 210              		.loc 1 59 5 view .LVU34
+ 211 0028 9A68     		ldr	r2, [r3, #8]
+ 212 002a 42F48062 		orr	r2, r2, #1024
+ 213 002e 9A60     		str	r2, [r3, #8]
+  60:Core/Src/init.c ****     SET_BIT(GPIOA->BSRR, GPIO_BSRR_BR5);
+ 214              		.loc 1 60 5 view .LVU35
+ 215 0030 9A69     		ldr	r2, [r3, #24]
+ 216 0032 42F40012 		orr	r2, r2, #2097152
+ 217 0036 9A61     		str	r2, [r3, #24]
+  61:Core/Src/init.c ****     //PF3
+  62:Core/Src/init.c ****     SET_BIT(GPIOF->MODER, GPIO_MODER_MODER3_0);
+ 218              		.loc 1 62 5 view .LVU36
+ 219 0038 03F5A053 		add	r3, r3, #5120
+ 220 003c 1A68     		ldr	r2, [r3]
+ 221 003e 42F04002 		orr	r2, r2, #64
+ 222 0042 1A60     		str	r2, [r3]
+  63:Core/Src/init.c ****     SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDR_OSPEED3_0);
+ 223              		.loc 1 63 5 view .LVU37
+ 224 0044 9A68     		ldr	r2, [r3, #8]
+ 225 0046 42F04002 		orr	r2, r2, #64
+ 226 004a 9A60     		str	r2, [r3, #8]
+  64:Core/Src/init.c ****     SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR3);
+ 227              		.loc 1 64 5 view .LVU38
+ 228 004c 9A69     		ldr	r2, [r3, #24]
+ 229 004e 42F40022 		orr	r2, r2, #524288
+ 230 0052 9A61     		str	r2, [r3, #24]
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 6
+
+
+  65:Core/Src/init.c ****     //PF5 (D7)
+  66:Core/Src/init.c ****     SET_BIT(GPIOF->MODER, GPIO_MODER_MODER5_0);
+ 231              		.loc 1 66 5 view .LVU39
+ 232 0054 1A68     		ldr	r2, [r3]
+ 233 0056 42F48062 		orr	r2, r2, #1024
+ 234 005a 1A60     		str	r2, [r3]
+  67:Core/Src/init.c ****     SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDR_OSPEED5_0);
+ 235              		.loc 1 67 5 view .LVU40
+ 236 005c 9A68     		ldr	r2, [r3, #8]
+ 237 005e 42F48062 		orr	r2, r2, #1024
+ 238 0062 9A60     		str	r2, [r3, #8]
+  68:Core/Src/init.c ****     SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR5);
+ 239              		.loc 1 68 5 view .LVU41
+ 240 0064 9A69     		ldr	r2, [r3, #24]
+ 241 0066 42F40012 		orr	r2, r2, #2097152
+ 242 006a 9A61     		str	r2, [r3, #24]
+  69:Core/Src/init.c ****     //PF10 (D8)
+  70:Core/Src/init.c ****     SET_BIT(GPIOF->MODER, GPIO_MODER_MODER10_0);
+ 243              		.loc 1 70 5 view .LVU42
+ 244 006c 1A68     		ldr	r2, [r3]
+ 245 006e 42F48012 		orr	r2, r2, #1048576
+ 246 0072 1A60     		str	r2, [r3]
+  71:Core/Src/init.c ****     SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDR_OSPEED10_0);
+ 247              		.loc 1 71 5 view .LVU43
+ 248 0074 9A68     		ldr	r2, [r3, #8]
+ 249 0076 42F48012 		orr	r2, r2, #1048576
+ 250 007a 9A60     		str	r2, [r3, #8]
+  72:Core/Src/init.c ****     SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR10);
+ 251              		.loc 1 72 5 view .LVU44
+ 252 007c 9A69     		ldr	r2, [r3, #24]
+ 253 007e 42F08062 		orr	r2, r2, #67108864
+ 254 0082 9A61     		str	r2, [r3, #24]
+  73:Core/Src/init.c ****     //PF15 (D2)
+  74:Core/Src/init.c ****     SET_BIT(GPIOF->MODER, GPIO_MODER_MODER15_0);
+ 255              		.loc 1 74 5 view .LVU45
+ 256 0084 1A68     		ldr	r2, [r3]
+ 257 0086 42F08042 		orr	r2, r2, #1073741824
+ 258 008a 1A60     		str	r2, [r3]
+  75:Core/Src/init.c ****     SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDR_OSPEED15_0);
+ 259              		.loc 1 75 5 view .LVU46
+ 260 008c 9A68     		ldr	r2, [r3, #8]
+ 261 008e 42F08042 		orr	r2, r2, #1073741824
+ 262 0092 9A60     		str	r2, [r3, #8]
+  76:Core/Src/init.c ****     SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR15);
+ 263              		.loc 1 76 5 view .LVU47
+ 264 0094 9A69     		ldr	r2, [r3, #24]
+ 265 0096 42F00042 		orr	r2, r2, #-2147483648
+ 266 009a 9A61     		str	r2, [r3, #24]
+  77:Core/Src/init.c **** }
+ 267              		.loc 1 77 1 is_stmt 0 view .LVU48
+ 268 009c 7047     		bx	lr
+ 269              	.L13:
+ 270 009e 00BF     		.align	2
+ 271              	.L12:
+ 272 00a0 00380240 		.word	1073887232
+ 273 00a4 00040240 		.word	1073873920
+ 274              		.cfi_endproc
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 7
+
+
+ 275              	.LFE134:
+ 277              		.section	.text.delay,"ax",%progbits
+ 278              		.align	1
+ 279              		.global	delay
+ 280              		.syntax unified
+ 281              		.thumb
+ 282              		.thumb_func
+ 284              	delay:
+ 285              	.LVL0:
+ 286              	.LFB135:
+  78:Core/Src/init.c **** 
+  79:Core/Src/init.c **** void delay(volatile uint32_t count)
+  80:Core/Src/init.c **** {
+ 287              		.loc 1 80 1 is_stmt 1 view -0
+ 288              		.cfi_startproc
+ 289              		@ args = 0, pretend = 0, frame = 8
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291              		@ link register save eliminated.
+ 292              		.loc 1 80 1 is_stmt 0 view .LVU50
+ 293 0000 82B0     		sub	sp, sp, #8
+ 294              	.LCFI0:
+ 295              		.cfi_def_cfa_offset 8
+ 296 0002 0190     		str	r0, [sp, #4]
+  81:Core/Src/init.c ****     for(; count > 0; count--)
+ 297              		.loc 1 81 5 is_stmt 1 view .LVU51
+ 298 0004 02E0     		b	.L15
+ 299              	.L16:
+  82:Core/Src/init.c ****     {
+  83:Core/Src/init.c ****         // void
+  84:Core/Src/init.c ****     }
+ 300              		.loc 1 84 5 view .LVU52
+  81:Core/Src/init.c ****     for(; count > 0; count--)
+ 301              		.loc 1 81 27 discriminator 2 view .LVU53
+ 302 0006 019B     		ldr	r3, [sp, #4]
+ 303 0008 013B     		subs	r3, r3, #1
+ 304 000a 0193     		str	r3, [sp, #4]
+ 305              	.L15:
+  81:Core/Src/init.c ****     for(; count > 0; count--)
+ 306              		.loc 1 81 17 discriminator 1 view .LVU54
+ 307 000c 019B     		ldr	r3, [sp, #4]
+ 308 000e 002B     		cmp	r3, #0
+ 309 0010 F9D1     		bne	.L16
+  85:Core/Src/init.c **** }
+ 310              		.loc 1 85 1 is_stmt 0 view .LVU55
+ 311 0012 02B0     		add	sp, sp, #8
+ 312              	.LCFI1:
+ 313              		.cfi_def_cfa_offset 0
+ 314              		@ sp needed
+ 315 0014 7047     		bx	lr
+ 316              		.cfi_endproc
+ 317              	.LFE135:
+ 319              		.section	.text.CheckTimeButtonPress,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	CheckTimeButtonPress
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 8
+
+
+ 326              	CheckTimeButtonPress:
+ 327              	.LFB136:
+  86:Core/Src/init.c **** 
+  87:Core/Src/init.c **** uint32_t CheckTimeButtonPress()
+  88:Core/Src/init.c **** {
+ 328              		.loc 1 88 1 is_stmt 1 view -0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+  89:Core/Src/init.c ****     uint32_t long_press_time = 50000;
+ 332              		.loc 1 89 5 view .LVU57
+ 333              	.LVL1:
+  90:Core/Src/init.c ****     if (READ_BIT(GPIOF->IDR, GPIO_IDR_ID3)) // button 3 A3 (PF3)
+ 334              		.loc 1 90 5 view .LVU58
+ 335              		.loc 1 90 9 is_stmt 0 view .LVU59
+ 336 0000 104B     		ldr	r3, .L29
+ 337 0002 1869     		ldr	r0, [r3, #16]
+ 338              		.loc 1 90 8 view .LVU60
+ 339 0004 10F00800 		ands	r0, r0, #8
+ 340 0008 0AD1     		bne	.L24
+ 341 000a 7047     		bx	lr
+ 342              	.LVL2:
+ 343              	.L22:
+ 344              	.LCFI2:
+ 345              		.cfi_def_cfa_offset 8
+ 346              		.cfi_offset 4, -8
+ 347              		.cfi_offset 14, -4
+ 348              	.LBB2:
+  91:Core/Src/init.c ****     {
+  92:Core/Src/init.c ****         uint32_t press_time = 0;
+  93:Core/Src/init.c ****         while(READ_BIT(GPIOF->IDR, GPIO_IDR_ID3))
+  94:Core/Src/init.c ****         {
+  95:Core/Src/init.c ****             delay(100);
+  96:Core/Src/init.c ****             press_time += 100;
+  97:Core/Src/init.c ****             if (press_time >= long_press_time)
+  98:Core/Src/init.c ****             {
+  99:Core/Src/init.c ****                 while(READ_BIT(GPIOF->IDR, GPIO_IDR_ID3))
+ 100:Core/Src/init.c ****                 {
+ 101:Core/Src/init.c ****                     delay(100);
+ 349              		.loc 1 101 21 is_stmt 1 view .LVU61
+ 350 000c 6420     		movs	r0, #100
+ 351 000e FFF7FEFF 		bl	delay
+ 352              	.LVL3:
+ 353              	.L21:
+  99:Core/Src/init.c ****                 {
+ 354              		.loc 1 99 23 view .LVU62
+ 355 0012 0C4B     		ldr	r3, .L29
+ 356 0014 1B69     		ldr	r3, [r3, #16]
+ 357 0016 13F0080F 		tst	r3, #8
+ 358 001a F7D1     		bne	.L22
+ 102:Core/Src/init.c ****                 }
+ 103:Core/Src/init.c ****                 return 2;
+ 359              		.loc 1 103 24 is_stmt 0 view .LVU63
+ 360 001c 0220     		movs	r0, #2
+ 361 001e 10E0     		b	.L18
+ 362              	.LVL4:
+ 363              	.L24:
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 9
+
+
+ 364              	.LCFI3:
+ 365              		.cfi_def_cfa_offset 0
+ 366              		.cfi_restore 4
+ 367              		.cfi_restore 14
+ 368              		.loc 1 103 24 view .LVU64
+ 369              	.LBE2:
+  88:Core/Src/init.c ****     uint32_t long_press_time = 50000;
+ 370              		.loc 1 88 1 view .LVU65
+ 371 0020 10B5     		push	{r4, lr}
+ 372              	.LCFI4:
+ 373              		.cfi_def_cfa_offset 8
+ 374              		.cfi_offset 4, -8
+ 375              		.cfi_offset 14, -4
+ 376              	.LBB3:
+  92:Core/Src/init.c ****         while(READ_BIT(GPIOF->IDR, GPIO_IDR_ID3))
+ 377              		.loc 1 92 18 view .LVU66
+ 378 0022 0024     		movs	r4, #0
+ 379              	.L19:
+ 380              	.LVL5:
+  93:Core/Src/init.c ****         {
+ 381              		.loc 1 93 15 is_stmt 1 view .LVU67
+ 382 0024 074B     		ldr	r3, .L29
+ 383 0026 1B69     		ldr	r3, [r3, #16]
+ 384 0028 13F0080F 		tst	r3, #8
+ 385 002c 08D0     		beq	.L28
+  95:Core/Src/init.c ****             press_time += 100;
+ 386              		.loc 1 95 13 view .LVU68
+ 387 002e 6420     		movs	r0, #100
+ 388 0030 FFF7FEFF 		bl	delay
+ 389              	.LVL6:
+  96:Core/Src/init.c ****             if (press_time >= long_press_time)
+ 390              		.loc 1 96 13 view .LVU69
+  96:Core/Src/init.c ****             if (press_time >= long_press_time)
+ 391              		.loc 1 96 24 is_stmt 0 view .LVU70
+ 392 0034 6434     		adds	r4, r4, #100
+ 393              	.LVL7:
+  97:Core/Src/init.c ****             {
+ 394              		.loc 1 97 13 is_stmt 1 view .LVU71
+  97:Core/Src/init.c ****             {
+ 395              		.loc 1 97 16 is_stmt 0 view .LVU72
+ 396 0036 4CF24F33 		movw	r3, #49999
+ 397 003a 9C42     		cmp	r4, r3
+ 398 003c F2D9     		bls	.L19
+ 399 003e E8E7     		b	.L21
+ 400              	.L28:
+ 104:Core/Src/init.c ****             }
+ 105:Core/Src/init.c ****         }
+ 106:Core/Src/init.c ****         return 1;
+ 401              		.loc 1 106 16 view .LVU73
+ 402 0040 0120     		movs	r0, #1
+ 403              	.L18:
+ 404              		.loc 1 106 16 view .LVU74
+ 405              	.LBE3:
+ 107:Core/Src/init.c ****     }
+ 108:Core/Src/init.c ****     return 0;
+ 109:Core/Src/init.c **** }
+ 406              		.loc 1 109 1 view .LVU75
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 10
+
+
+ 407 0042 10BD     		pop	{r4, pc}
+ 408              	.LVL8:
+ 409              	.L30:
+ 410              		.loc 1 109 1 view .LVU76
+ 411              		.align	2
+ 412              	.L29:
+ 413 0044 00140240 		.word	1073878016
+ 414              		.cfi_endproc
+ 415              	.LFE136:
+ 417              		.section	.text.TimeMerz,"ax",%progbits
+ 418              		.align	1
+ 419              		.global	TimeMerz
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	TimeMerz:
+ 425              	.LVL9:
+ 426              	.LFB137:
+ 110:Core/Src/init.c **** 
+ 111:Core/Src/init.c **** void TimeMerz(volatile uint32_t mode)
+ 112:Core/Src/init.c **** {
+ 427              		.loc 1 112 1 is_stmt 1 view -0
+ 428              		.cfi_startproc
+ 429              		@ args = 0, pretend = 0, frame = 8
+ 430              		@ frame_needed = 0, uses_anonymous_args = 0
+ 431              		.loc 1 112 1 is_stmt 0 view .LVU78
+ 432 0000 00B5     		push	{lr}
+ 433              	.LCFI5:
+ 434              		.cfi_def_cfa_offset 4
+ 435              		.cfi_offset 14, -4
+ 436 0002 83B0     		sub	sp, sp, #12
+ 437              	.LCFI6:
+ 438              		.cfi_def_cfa_offset 16
+ 439 0004 0190     		str	r0, [sp, #4]
+ 113:Core/Src/init.c ****     if (mode == 0)
+ 440              		.loc 1 113 5 is_stmt 1 view .LVU79
+ 441              		.loc 1 113 14 is_stmt 0 view .LVU80
+ 442 0006 019B     		ldr	r3, [sp, #4]
+ 443              		.loc 1 113 8 view .LVU81
+ 444 0008 43B1     		cbz	r3, .L36
+ 445              	.LVL10:
+ 446              	.L32:
+ 114:Core/Src/init.c ****     {
+ 115:Core/Src/init.c ****         delay(30000*6);
+ 116:Core/Src/init.c ****     }
+ 117:Core/Src/init.c ****     if (mode == 1)
+ 447              		.loc 1 117 5 is_stmt 1 view .LVU82
+ 448              		.loc 1 117 14 is_stmt 0 view .LVU83
+ 449 000a 019B     		ldr	r3, [sp, #4]
+ 450              		.loc 1 117 8 view .LVU84
+ 451 000c 012B     		cmp	r3, #1
+ 452 000e 09D0     		beq	.L37
+ 453              	.L33:
+ 118:Core/Src/init.c ****     {
+ 119:Core/Src/init.c ****         delay(15000*6);
+ 120:Core/Src/init.c ****     }
+ 121:Core/Src/init.c ****     if (mode == 2)
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 11
+
+
+ 454              		.loc 1 121 5 is_stmt 1 view .LVU85
+ 455              		.loc 1 121 14 is_stmt 0 view .LVU86
+ 456 0010 019B     		ldr	r3, [sp, #4]
+ 457              		.loc 1 121 8 view .LVU87
+ 458 0012 022B     		cmp	r3, #2
+ 459 0014 0AD0     		beq	.L38
+ 460              	.L31:
+ 122:Core/Src/init.c ****     {
+ 123:Core/Src/init.c ****         delay(7500*6);
+ 124:Core/Src/init.c ****     }
+ 125:Core/Src/init.c **** }
+ 461              		.loc 1 125 1 view .LVU88
+ 462 0016 03B0     		add	sp, sp, #12
+ 463              	.LCFI7:
+ 464              		.cfi_remember_state
+ 465              		.cfi_def_cfa_offset 4
+ 466              		@ sp needed
+ 467 0018 5DF804FB 		ldr	pc, [sp], #4
+ 468              	.LVL11:
+ 469              	.L36:
+ 470              	.LCFI8:
+ 471              		.cfi_restore_state
+ 115:Core/Src/init.c ****     }
+ 472              		.loc 1 115 9 is_stmt 1 view .LVU89
+ 473 001c 0648     		ldr	r0, .L39
+ 474              	.LVL12:
+ 115:Core/Src/init.c ****     }
+ 475              		.loc 1 115 9 is_stmt 0 view .LVU90
+ 476 001e FFF7FEFF 		bl	delay
+ 477              	.LVL13:
+ 478 0022 F2E7     		b	.L32
+ 479              	.L37:
+ 119:Core/Src/init.c ****     }
+ 480              		.loc 1 119 9 is_stmt 1 view .LVU91
+ 481 0024 0548     		ldr	r0, .L39+4
+ 482 0026 FFF7FEFF 		bl	delay
+ 483              	.LVL14:
+ 484 002a F1E7     		b	.L33
+ 485              	.L38:
+ 123:Core/Src/init.c ****     }
+ 486              		.loc 1 123 9 view .LVU92
+ 487 002c 4AF6C870 		movw	r0, #45000
+ 488 0030 FFF7FEFF 		bl	delay
+ 489              	.LVL15:
+ 490              		.loc 1 125 1 is_stmt 0 view .LVU93
+ 491 0034 EFE7     		b	.L31
+ 492              	.L40:
+ 493 0036 00BF     		.align	2
+ 494              	.L39:
+ 495 0038 20BF0200 		.word	180000
+ 496 003c 905F0100 		.word	90000
+ 497              		.cfi_endproc
+ 498              	.LFE137:
+ 500              		.text
+ 501              	.Letext0:
+ 502              		.file 2 "D:/Tools/SysGCC/arm-none-eabi/include/machine/_default_types.h"
+ 503              		.file 3 "D:/Tools/SysGCC/arm-none-eabi/include/sys/_stdint.h"
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 12
+
+
+ 504              		.file 4 "Core/Inc/../../CMSIS/Devices/STM32F4xx/Inc/STM32F429ZI/stm32f429xx.h"
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:21     .text.GPIO_init__Memory:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:27     .text.GPIO_init__Memory:00000000 GPIO_init__Memory
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:40     .text.GPIO_init_With_Myself_Macros:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:46     .text.GPIO_init_With_Myself_Macros:00000000 GPIO_init_With_Myself_Macros
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:78     .text.GPIO_init_With_Myself_Macros:00000038 $d
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:84     .text.GPIO_init_With_Myself_Macros2:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:90     .text.GPIO_init_With_Myself_Macros2:00000000 GPIO_init_With_Myself_Macros2
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:122    .text.GPIO_init_With_Myself_Macros2:00000038 $d
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:128    .text.GPIO_init_With_Myself_Macros3:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:134    .text.GPIO_init_With_Myself_Macros3:00000000 GPIO_init_With_Myself_Macros3
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:172    .text.GPIO_init_With_Myself_Macros3:0000003c $d
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:178    .text.GPIO_init_CMSIS:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:184    .text.GPIO_init_CMSIS:00000000 GPIO_init_CMSIS
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:272    .text.GPIO_init_CMSIS:000000a0 $d
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:278    .text.delay:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:284    .text.delay:00000000 delay
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:320    .text.CheckTimeButtonPress:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:326    .text.CheckTimeButtonPress:00000000 CheckTimeButtonPress
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:413    .text.CheckTimeButtonPress:00000044 $d
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:418    .text.TimeMerz:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:424    .text.TimeMerz:00000000 TimeMerz
+C:\Users\ilyak\AppData\Local\Temp\ccatMhxc.s:495    .text.TimeMerz:00000038 $d
+
+NO UNDEFINED SYMBOLS

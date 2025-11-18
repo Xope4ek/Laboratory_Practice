@@ -1,0 +1,709 @@
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/main.c"
+  20              		.section	.text.main,"ax",%progbits
+  21              		.align	1
+  22              		.global	main
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	main:
+  28              	.LFB130:
+   1:Core/Src/main.c **** #include "main.h"
+   2:Core/Src/main.c **** /* #include "interupt.h" */
+   3:Core/Src/main.c **** 
+   4:Core/Src/main.c **** int main(void)
+   5:Core/Src/main.c **** {
+  29              		.loc 1 5 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 36
+  36              		.cfi_offset 4, -36
+  37              		.cfi_offset 5, -32
+  38              		.cfi_offset 6, -28
+  39              		.cfi_offset 7, -24
+  40              		.cfi_offset 8, -20
+  41              		.cfi_offset 9, -16
+  42              		.cfi_offset 10, -12
+  43              		.cfi_offset 11, -8
+  44              		.cfi_offset 14, -4
+  45 0004 83B0     		sub	sp, sp, #12
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 48
+   6:Core/Src/main.c ****     uint32_t button = 0;   
+  48              		.loc 1 6 5 view .LVU1
+  49              	.LVL0:
+   7:Core/Src/main.c ****     uint32_t button_Set = 0;
+  50              		.loc 1 7 5 view .LVU2
+   8:Core/Src/main.c ****     uint32_t pressed = 0;
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 2
+
+
+  51              		.loc 1 8 5 view .LVU3
+   9:Core/Src/main.c **** 
+  10:Core/Src/main.c ****     uint32_t light1 = 0;
+  52              		.loc 1 10 5 view .LVU4
+  11:Core/Src/main.c ****     uint32_t light2 = 0;
+  53              		.loc 1 11 5 view .LVU5
+  12:Core/Src/main.c ****     uint32_t light3 = 0;
+  54              		.loc 1 12 5 view .LVU6
+  13:Core/Src/main.c ****     uint32_t light4 = 0;
+  55              		.loc 1 13 5 view .LVU7
+  14:Core/Src/main.c ****     uint32_t light5 = 0;
+  56              		.loc 1 14 5 view .LVU8
+  15:Core/Src/main.c ****     uint32_t light6 = 0;
+  57              		.loc 1 15 5 view .LVU9
+  16:Core/Src/main.c **** 
+  17:Core/Src/main.c ****     GPIO_init_With_Myself_Macros ();
+  58              		.loc 1 17 5 view .LVU10
+  59 0006 FFF7FEFF 		bl	GPIO_init_With_Myself_Macros
+  60              	.LVL1:
+  18:Core/Src/main.c ****     GPIO_init_With_Myself_Macros2 ();
+  61              		.loc 1 18 5 view .LVU11
+  62 000a FFF7FEFF 		bl	GPIO_init_With_Myself_Macros2
+  63              	.LVL2:
+  19:Core/Src/main.c ****     GPIO_init_With_Myself_Macros3 ();
+  64              		.loc 1 19 5 view .LVU12
+  65 000e FFF7FEFF 		bl	GPIO_init_With_Myself_Macros3
+  66              	.LVL3:
+  20:Core/Src/main.c ****     GPIO_init_CMSIS ();
+  67              		.loc 1 20 5 view .LVU13
+  68 0012 FFF7FEFF 		bl	GPIO_init_CMSIS
+  69              	.LVL4:
+  15:Core/Src/main.c **** 
+  70              		.loc 1 15 14 is_stmt 0 view .LVU14
+  71 0016 0027     		movs	r7, #0
+  14:Core/Src/main.c ****     uint32_t light6 = 0;
+  72              		.loc 1 14 14 view .LVU15
+  73 0018 BB46     		mov	fp, r7
+  13:Core/Src/main.c ****     uint32_t light5 = 0;
+  74              		.loc 1 13 14 view .LVU16
+  75 001a BA46     		mov	r10, r7
+  12:Core/Src/main.c ****     uint32_t light4 = 0;
+  76              		.loc 1 12 14 view .LVU17
+  77 001c B946     		mov	r9, r7
+  11:Core/Src/main.c ****     uint32_t light3 = 0;
+  78              		.loc 1 11 14 view .LVU18
+  79 001e B846     		mov	r8, r7
+  10:Core/Src/main.c ****     uint32_t light2 = 0;
+  80              		.loc 1 10 14 view .LVU19
+  81 0020 0197     		str	r7, [sp, #4]
+   7:Core/Src/main.c ****     uint32_t pressed = 0;
+  82              		.loc 1 7 14 view .LVU20
+  83 0022 3D46     		mov	r5, r7
+   6:Core/Src/main.c ****     uint32_t button_Set = 0;
+  84              		.loc 1 6 14 view .LVU21
+  85 0024 3C46     		mov	r4, r7
+  86 0026 90E0     		b	.L2
+  87              	.LVL5:
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 3
+
+
+  88              	.L35:
+  21:Core/Src/main.c ****     while (1)
+  22:Core/Src/main.c ****     {
+  23:Core/Src/main.c ****         // Реализация выполнения задания для первой кнопк�
+  24:Core/Src/main.c ****         if (BIT_READ(GPIOA_IDR, GPIO_PIN_IDR_3)) // Если поступила единица на
+  25:Core/Src/main.c ****         {
+  26:Core/Src/main.c ****             button++;
+  89              		.loc 1 26 13 is_stmt 1 view .LVU22
+  90              		.loc 1 26 19 is_stmt 0 view .LVU23
+  91 0028 0134     		adds	r4, r4, #1
+  92              	.LVL6:
+  27:Core/Src/main.c ****             delay(50000);
+  93              		.loc 1 27 13 is_stmt 1 view .LVU24
+  94 002a 4CF25030 		movw	r0, #50000
+  95 002e FFF7FEFF 		bl	delay
+  96              	.LVL7:
+  97 0032 90E0     		b	.L3
+  98              	.L11:
+  28:Core/Src/main.c ****         }
+  29:Core/Src/main.c ****         switch (button)
+  30:Core/Src/main.c ****         {
+  31:Core/Src/main.c ****         case 1:
+  32:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_14); // включает красный
+  99              		.loc 1 32 13 view .LVU25
+ 100 0034 694E     		ldr	r6, .L41
+ 101 0036 D6F81834 		ldr	r3, [r6, #1048]
+ 102 003a 43F48043 		orr	r3, r3, #16384
+ 103 003e C6F81834 		str	r3, [r6, #1048]
+ 104              	.LVL8:
+  33:Core/Src/main.c ****             TimeMerz(light1);
+ 105              		.loc 1 33 13 view .LVU26
+ 106 0042 0198     		ldr	r0, [sp, #4]
+ 107 0044 FFF7FEFF 		bl	TimeMerz
+ 108              	.LVL9:
+  34:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14); // выключает красный
+ 109              		.loc 1 34 13 view .LVU27
+ 110 0048 D6F81834 		ldr	r3, [r6, #1048]
+ 111 004c 43F08043 		orr	r3, r3, #1073741824
+ 112 0050 C6F81834 		str	r3, [r6, #1048]
+  35:Core/Src/main.c ****             TimeMerz(light1);
+ 113              		.loc 1 35 13 view .LVU28
+ 114 0054 0198     		ldr	r0, [sp, #4]
+ 115 0056 FFF7FEFF 		bl	TimeMerz
+ 116              	.LVL10:
+  36:Core/Src/main.c ****             break;
+ 117              		.loc 1 36 13 view .LVU29
+ 118              	.L4:
+  37:Core/Src/main.c ****         case 2:
+  38:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_7); // Включает Синий
+  39:Core/Src/main.c ****             TimeMerz(light2);
+  40:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7); // Выключает Синий
+  41:Core/Src/main.c ****             TimeMerz(light2);
+  42:Core/Src/main.c ****             break;
+  43:Core/Src/main.c ****         case 3:
+  44:Core/Src/main.c ****             SET_BIT(GPIOB->BSRR, GPIO_BSRR_BS0); // вкл Желтый
+  45:Core/Src/main.c ****             TimeMerz(light3);
+  46:Core/Src/main.c ****             SET_BIT(GPIOB->BSRR, GPIO_BSRR_BR0); // выкл Желтый
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 4
+
+
+  47:Core/Src/main.c ****             TimeMerz(light3);
+  48:Core/Src/main.c ****             break;
+  49:Core/Src/main.c ****         case 4:
+  50:Core/Src/main.c ****             BIT_SET(GPIOA->BSRR, GPIO_BSRR_BS5); // вкл свой D4
+  51:Core/Src/main.c ****             TimeMerz(light4);
+  52:Core/Src/main.c ****             BIT_SET(GPIOA->BSRR, GPIO_BSRR_BR5); // выкл свой D4
+  53:Core/Src/main.c ****             TimeMerz(light4);
+  54:Core/Src/main.c ****             break;
+  55:Core/Src/main.c ****         case 5:
+  56:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BS5); // вкл D7
+  57:Core/Src/main.c ****             TimeMerz(light5);
+  58:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR5); // выкл D7
+  59:Core/Src/main.c ****             TimeMerz(light5);
+  60:Core/Src/main.c ****             break;
+  61:Core/Src/main.c ****         case 6:
+  62:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BS15); // вкл D2
+  63:Core/Src/main.c ****             TimeMerz(light6);
+  64:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR15); // выкл D2
+  65:Core/Src/main.c ****             TimeMerz(light6);
+  66:Core/Src/main.c ****             break;
+  67:Core/Src/main.c ****         default:
+  68:Core/Src/main.c ****             button = 0;
+  69:Core/Src/main.c ****             break;
+  70:Core/Src/main.c ****         }
+  71:Core/Src/main.c **** 
+  72:Core/Src/main.c ****     // Реализация выполнения задания для 3ей кнопки по ко
+  73:Core/Src/main.c ****         pressed = CheckTimeButtonPress();      
+ 119              		.loc 1 73 9 view .LVU30
+ 120              		.loc 1 73 19 is_stmt 0 view .LVU31
+ 121 005a FFF7FEFF 		bl	CheckTimeButtonPress
+ 122              	.LVL11:
+  74:Core/Src/main.c ****         if (pressed == 1)
+ 123              		.loc 1 74 9 is_stmt 1 view .LVU32
+ 124              		.loc 1 74 12 is_stmt 0 view .LVU33
+ 125 005e 0128     		cmp	r0, #1
+ 126 0060 66D0     		beq	.L32
+  75:Core/Src/main.c ****         {
+  76:Core/Src/main.c ****             button--;
+  77:Core/Src/main.c ****             pressed = 0;
+  78:Core/Src/main.c ****         }
+  79:Core/Src/main.c ****         if (pressed == 2)
+ 127              		.loc 1 79 9 is_stmt 1 view .LVU34
+ 128              		.loc 1 79 12 is_stmt 0 view .LVU35
+ 129 0062 0228     		cmp	r0, #2
+ 130 0064 66D0     		beq	.L33
+ 131              	.LVL12:
+ 132              	.L13:
+  80:Core/Src/main.c ****         {
+  81:Core/Src/main.c ****             button_Set++;
+  82:Core/Src/main.c ****             pressed = 0;
+  83:Core/Src/main.c ****         }
+  84:Core/Src/main.c ****     // Реализация выполнения задания для 2ой кнопки по ко
+  85:Core/Src/main.c ****         if (BIT_READ(GPIOC_IDR, GPIO_PIN_IDR_3)) // Если нажата 2я кнопка PIN A2
+ 133              		.loc 1 85 9 is_stmt 1 view .LVU36
+ 134              		.loc 1 85 13 is_stmt 0 view .LVU37
+ 135 0066 5D4B     		ldr	r3, .L41
+ 136 0068 D3F81038 		ldr	r3, [r3, #2064]
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 5
+
+
+ 137              		.loc 1 85 12 view .LVU38
+ 138 006c 13F0080F 		tst	r3, #8
+ 139 0070 6BD0     		beq	.L2
+  86:Core/Src/main.c ****         {
+  87:Core/Src/main.c ****             switch (button_Set)
+ 140              		.loc 1 87 13 is_stmt 1 view .LVU39
+ 141 0072 6B1E     		subs	r3, r5, #1
+ 142 0074 052B     		cmp	r3, #5
+ 143 0076 00F2AE80 		bhi	.L24
+ 144 007a DFE803F0 		tbb	[pc, r3]
+ 145              	.L17:
+ 146 007e 5D       		.byte	(.L22-.L17)/2
+ 147 007f 82       		.byte	(.L21-.L17)/2
+ 148 0080 8B       		.byte	(.L20-.L17)/2
+ 149 0081 94       		.byte	(.L19-.L17)/2
+ 150 0082 9D       		.byte	(.L18-.L17)/2
+ 151 0083 A6       		.byte	(.L16-.L17)/2
+ 152              	.LVL13:
+ 153              		.p2align 1
+ 154              	.L10:
+  38:Core/Src/main.c ****             TimeMerz(light2);
+ 155              		.loc 1 38 13 view .LVU40
+ 156 0084 554E     		ldr	r6, .L41
+ 157 0086 D6F81834 		ldr	r3, [r6, #1048]
+ 158 008a 43F08003 		orr	r3, r3, #128
+ 159 008e C6F81834 		str	r3, [r6, #1048]
+ 160              	.LVL14:
+  39:Core/Src/main.c ****             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7); // Выключает Синий
+ 161              		.loc 1 39 13 view .LVU41
+ 162 0092 4046     		mov	r0, r8
+ 163 0094 FFF7FEFF 		bl	TimeMerz
+ 164              	.LVL15:
+  40:Core/Src/main.c ****             TimeMerz(light2);
+ 165              		.loc 1 40 13 view .LVU42
+ 166 0098 D6F81834 		ldr	r3, [r6, #1048]
+ 167 009c 43F40003 		orr	r3, r3, #8388608
+ 168 00a0 C6F81834 		str	r3, [r6, #1048]
+  41:Core/Src/main.c ****             break;
+ 169              		.loc 1 41 13 view .LVU43
+ 170 00a4 4046     		mov	r0, r8
+ 171 00a6 FFF7FEFF 		bl	TimeMerz
+ 172              	.LVL16:
+  42:Core/Src/main.c ****         case 3:
+ 173              		.loc 1 42 13 view .LVU44
+ 174 00aa D6E7     		b	.L4
+ 175              	.LVL17:
+ 176              	.L9:
+  44:Core/Src/main.c ****             TimeMerz(light3);
+ 177              		.loc 1 44 13 view .LVU45
+ 178 00ac 4C4E     		ldr	r6, .L41+4
+ 179 00ae B369     		ldr	r3, [r6, #24]
+ 180 00b0 43F00103 		orr	r3, r3, #1
+ 181 00b4 B361     		str	r3, [r6, #24]
+ 182              	.LVL18:
+  45:Core/Src/main.c ****             SET_BIT(GPIOB->BSRR, GPIO_BSRR_BR0); // выкл Желтый
+ 183              		.loc 1 45 13 view .LVU46
+ 184 00b6 4846     		mov	r0, r9
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 6
+
+
+ 185 00b8 FFF7FEFF 		bl	TimeMerz
+ 186              	.LVL19:
+  46:Core/Src/main.c ****             TimeMerz(light3);
+ 187              		.loc 1 46 13 view .LVU47
+ 188 00bc B369     		ldr	r3, [r6, #24]
+ 189 00be 43F48033 		orr	r3, r3, #65536
+ 190 00c2 B361     		str	r3, [r6, #24]
+  47:Core/Src/main.c ****             break;
+ 191              		.loc 1 47 13 view .LVU48
+ 192 00c4 4846     		mov	r0, r9
+ 193 00c6 FFF7FEFF 		bl	TimeMerz
+ 194              	.LVL20:
+  48:Core/Src/main.c ****         case 4:
+ 195              		.loc 1 48 13 view .LVU49
+ 196 00ca C6E7     		b	.L4
+ 197              	.LVL21:
+ 198              	.L8:
+  50:Core/Src/main.c ****             TimeMerz(light4);
+ 199              		.loc 1 50 13 view .LVU50
+ 200 00cc 434E     		ldr	r6, .L41
+ 201 00ce B369     		ldr	r3, [r6, #24]
+ 202 00d0 43F02003 		orr	r3, r3, #32
+ 203 00d4 B361     		str	r3, [r6, #24]
+ 204              	.LVL22:
+  51:Core/Src/main.c ****             BIT_SET(GPIOA->BSRR, GPIO_BSRR_BR5); // выкл свой D4
+ 205              		.loc 1 51 13 view .LVU51
+ 206 00d6 5046     		mov	r0, r10
+ 207 00d8 FFF7FEFF 		bl	TimeMerz
+ 208              	.LVL23:
+  52:Core/Src/main.c ****             TimeMerz(light4);
+ 209              		.loc 1 52 13 view .LVU52
+ 210 00dc B369     		ldr	r3, [r6, #24]
+ 211 00de 43F40013 		orr	r3, r3, #2097152
+ 212 00e2 B361     		str	r3, [r6, #24]
+  53:Core/Src/main.c ****             break;
+ 213              		.loc 1 53 13 view .LVU53
+ 214 00e4 5046     		mov	r0, r10
+ 215 00e6 FFF7FEFF 		bl	TimeMerz
+ 216              	.LVL24:
+  54:Core/Src/main.c ****         case 5:
+ 217              		.loc 1 54 13 view .LVU54
+ 218 00ea B6E7     		b	.L4
+ 219              	.LVL25:
+ 220              	.L7:
+  56:Core/Src/main.c ****             TimeMerz(light5);
+ 221              		.loc 1 56 13 view .LVU55
+ 222 00ec 3D4E     		ldr	r6, .L41+8
+ 223 00ee B369     		ldr	r3, [r6, #24]
+ 224 00f0 43F02003 		orr	r3, r3, #32
+ 225 00f4 B361     		str	r3, [r6, #24]
+ 226              	.LVL26:
+  57:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR5); // выкл D7
+ 227              		.loc 1 57 13 view .LVU56
+ 228 00f6 5846     		mov	r0, fp
+ 229 00f8 FFF7FEFF 		bl	TimeMerz
+ 230              	.LVL27:
+  58:Core/Src/main.c ****             TimeMerz(light5);
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 7
+
+
+ 231              		.loc 1 58 13 view .LVU57
+ 232 00fc B369     		ldr	r3, [r6, #24]
+ 233 00fe 43F40013 		orr	r3, r3, #2097152
+ 234 0102 B361     		str	r3, [r6, #24]
+  59:Core/Src/main.c ****             break;
+ 235              		.loc 1 59 13 view .LVU58
+ 236 0104 5846     		mov	r0, fp
+ 237 0106 FFF7FEFF 		bl	TimeMerz
+ 238              	.LVL28:
+  60:Core/Src/main.c ****         case 6:
+ 239              		.loc 1 60 13 view .LVU59
+ 240 010a A6E7     		b	.L4
+ 241              	.LVL29:
+ 242              	.L5:
+  62:Core/Src/main.c ****             TimeMerz(light6);
+ 243              		.loc 1 62 13 view .LVU60
+ 244 010c 354E     		ldr	r6, .L41+8
+ 245 010e B369     		ldr	r3, [r6, #24]
+ 246 0110 43F40043 		orr	r3, r3, #32768
+ 247 0114 B361     		str	r3, [r6, #24]
+ 248              	.LVL30:
+  63:Core/Src/main.c ****             SET_BIT(GPIOF->BSRR, GPIO_BSRR_BR15); // выкл D2
+ 249              		.loc 1 63 13 view .LVU61
+ 250 0116 3846     		mov	r0, r7
+ 251 0118 FFF7FEFF 		bl	TimeMerz
+ 252              	.LVL31:
+  64:Core/Src/main.c ****             TimeMerz(light6);
+ 253              		.loc 1 64 13 view .LVU62
+ 254 011c B369     		ldr	r3, [r6, #24]
+ 255 011e 43F00043 		orr	r3, r3, #-2147483648
+ 256 0122 B361     		str	r3, [r6, #24]
+  65:Core/Src/main.c ****             break;
+ 257              		.loc 1 65 13 view .LVU63
+ 258 0124 3846     		mov	r0, r7
+ 259 0126 FFF7FEFF 		bl	TimeMerz
+ 260              	.LVL32:
+  66:Core/Src/main.c ****         default:
+ 261              		.loc 1 66 13 view .LVU64
+ 262 012a 96E7     		b	.L4
+ 263              	.LVL33:
+ 264              	.L23:
+  29:Core/Src/main.c ****         {
+ 265              		.loc 1 29 9 is_stmt 0 view .LVU65
+ 266 012c 0024     		movs	r4, #0
+ 267              	.LVL34:
+  29:Core/Src/main.c ****         {
+ 268              		.loc 1 29 9 view .LVU66
+ 269 012e 94E7     		b	.L4
+ 270              	.LVL35:
+ 271              	.L32:
+  76:Core/Src/main.c ****             pressed = 0;
+ 272              		.loc 1 76 13 is_stmt 1 view .LVU67
+  76:Core/Src/main.c ****             pressed = 0;
+ 273              		.loc 1 76 19 is_stmt 0 view .LVU68
+ 274 0130 013C     		subs	r4, r4, #1
+ 275              	.LVL36:
+  77:Core/Src/main.c ****         }
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 8
+
+
+ 276              		.loc 1 77 13 is_stmt 1 view .LVU69
+  79:Core/Src/main.c ****         {
+ 277              		.loc 1 79 9 view .LVU70
+ 278 0132 98E7     		b	.L13
+ 279              	.LVL37:
+ 280              	.L33:
+  81:Core/Src/main.c ****             pressed = 0;
+ 281              		.loc 1 81 13 view .LVU71
+  81:Core/Src/main.c ****             pressed = 0;
+ 282              		.loc 1 81 23 is_stmt 0 view .LVU72
+ 283 0134 0135     		adds	r5, r5, #1
+ 284              	.LVL38:
+  82:Core/Src/main.c ****         }
+ 285              		.loc 1 82 13 is_stmt 1 view .LVU73
+  82:Core/Src/main.c ****         }
+ 286              		.loc 1 82 13 is_stmt 0 view .LVU74
+ 287 0136 96E7     		b	.L13
+ 288              	.LVL39:
+ 289              	.L22:
+  88:Core/Src/main.c ****             {
+  89:Core/Src/main.c ****             case 1:
+  90:Core/Src/main.c ****                 if (light1 < 2) {light1++;}
+ 290              		.loc 1 90 17 is_stmt 1 view .LVU75
+ 291              		.loc 1 90 20 is_stmt 0 view .LVU76
+ 292 0138 019B     		ldr	r3, [sp, #4]
+ 293 013a 012B     		cmp	r3, #1
+ 294 013c 1ED9     		bls	.L34
+  91:Core/Src/main.c ****                 else {light1 = 0;}
+ 295              		.loc 1 91 30 view .LVU77
+ 296 013e 0023     		movs	r3, #0
+ 297 0140 0193     		str	r3, [sp, #4]
+ 298              	.LVL40:
+ 299              	.L15:
+  92:Core/Src/main.c ****                 break;
+  93:Core/Src/main.c ****             case 2:
+  94:Core/Src/main.c ****                 if (light2 < 2) {light2++;}
+  95:Core/Src/main.c ****                 else {light2 = 0;}
+  96:Core/Src/main.c ****                 break;
+  97:Core/Src/main.c ****             case 3:
+  98:Core/Src/main.c ****                 if (light3 < 2) {light3++;}
+  99:Core/Src/main.c ****                 else {light3 = 0;}
+ 100:Core/Src/main.c ****                 break;
+ 101:Core/Src/main.c ****             case 4:
+ 102:Core/Src/main.c ****                 if (light4 < 2) {light4++;}
+ 103:Core/Src/main.c ****                 else {light4 = 0;}
+ 104:Core/Src/main.c ****                 break; 
+ 105:Core/Src/main.c ****             case 5:
+ 106:Core/Src/main.c ****                 if (light5 < 2) {light5++;}
+ 107:Core/Src/main.c ****                 else {light5 = 0;}
+ 108:Core/Src/main.c ****                 break; 
+ 109:Core/Src/main.c ****             case 6:
+ 110:Core/Src/main.c ****                 if (light6 < 2) {light6++;}
+ 111:Core/Src/main.c ****                 else {light6 = 0;}
+ 112:Core/Src/main.c ****                 break;  
+ 113:Core/Src/main.c ****             default:
+ 114:Core/Src/main.c ****                 button_Set = 0;
+ 115:Core/Src/main.c ****                 break;
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 9
+
+
+ 116:Core/Src/main.c ****             }
+ 117:Core/Src/main.c ****             delay(50000);
+ 300              		.loc 1 117 13 is_stmt 1 view .LVU78
+ 301 0142 4CF25030 		movw	r0, #50000
+ 302 0146 FFF7FEFF 		bl	delay
+ 303              	.LVL41:
+ 304              	.L2:
+  21:Core/Src/main.c ****     {
+ 305              		.loc 1 21 5 view .LVU79
+  24:Core/Src/main.c ****         {
+ 306              		.loc 1 24 9 view .LVU80
+  24:Core/Src/main.c ****         {
+ 307              		.loc 1 24 13 is_stmt 0 view .LVU81
+ 308 014a 244B     		ldr	r3, .L41
+ 309 014c 1B69     		ldr	r3, [r3, #16]
+  24:Core/Src/main.c ****         {
+ 310              		.loc 1 24 12 view .LVU82
+ 311 014e 13F0080F 		tst	r3, #8
+ 312 0152 7FF469AF 		bne	.L35
+ 313              	.L3:
+  29:Core/Src/main.c ****         {
+ 314              		.loc 1 29 9 is_stmt 1 view .LVU83
+ 315 0156 631E     		subs	r3, r4, #1
+ 316 0158 052B     		cmp	r3, #5
+ 317 015a E7D8     		bhi	.L23
+ 318 015c 01A2     		adr	r2, .L6
+ 319 015e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 320 0162 00BF     		.p2align 2
+ 321              	.L6:
+ 322 0164 35000000 		.word	.L11+1
+ 323 0168 85000000 		.word	.L10+1
+ 324 016c AD000000 		.word	.L9+1
+ 325 0170 CD000000 		.word	.L8+1
+ 326 0174 ED000000 		.word	.L7+1
+ 327 0178 0D010000 		.word	.L5+1
+ 328              	.LVL42:
+ 329              		.p2align 1
+ 330              	.L34:
+  90:Core/Src/main.c ****                 else {light1 = 0;}
+ 331              		.loc 1 90 34 discriminator 1 view .LVU84
+  90:Core/Src/main.c ****                 else {light1 = 0;}
+ 332              		.loc 1 90 40 is_stmt 0 discriminator 1 view .LVU85
+ 333 017c 0133     		adds	r3, r3, #1
+ 334 017e 0193     		str	r3, [sp, #4]
+ 335              	.LVL43:
+  90:Core/Src/main.c ****                 else {light1 = 0;}
+ 336              		.loc 1 90 40 discriminator 1 view .LVU86
+ 337 0180 DFE7     		b	.L15
+ 338              	.LVL44:
+ 339              	.L21:
+  94:Core/Src/main.c ****                 else {light2 = 0;}
+ 340              		.loc 1 94 17 is_stmt 1 view .LVU87
+  94:Core/Src/main.c ****                 else {light2 = 0;}
+ 341              		.loc 1 94 20 is_stmt 0 view .LVU88
+ 342 0182 B8F1010F 		cmp	r8, #1
+ 343 0186 02D9     		bls	.L36
+  95:Core/Src/main.c ****                 break;
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 10
+
+
+ 344              		.loc 1 95 30 view .LVU89
+ 345 0188 4FF00008 		mov	r8, #0
+ 346              	.LVL45:
+  95:Core/Src/main.c ****                 break;
+ 347              		.loc 1 95 30 view .LVU90
+ 348 018c D9E7     		b	.L15
+ 349              	.LVL46:
+ 350              	.L36:
+  94:Core/Src/main.c ****                 else {light2 = 0;}
+ 351              		.loc 1 94 34 is_stmt 1 discriminator 1 view .LVU91
+  94:Core/Src/main.c ****                 else {light2 = 0;}
+ 352              		.loc 1 94 40 is_stmt 0 discriminator 1 view .LVU92
+ 353 018e 08F10108 		add	r8, r8, #1
+ 354              	.LVL47:
+  94:Core/Src/main.c ****                 else {light2 = 0;}
+ 355              		.loc 1 94 40 discriminator 1 view .LVU93
+ 356 0192 D6E7     		b	.L15
+ 357              	.L20:
+  98:Core/Src/main.c ****                 else {light3 = 0;}
+ 358              		.loc 1 98 17 is_stmt 1 view .LVU94
+  98:Core/Src/main.c ****                 else {light3 = 0;}
+ 359              		.loc 1 98 20 is_stmt 0 view .LVU95
+ 360 0194 B9F1010F 		cmp	r9, #1
+ 361 0198 02D9     		bls	.L37
+  99:Core/Src/main.c ****                 break;
+ 362              		.loc 1 99 30 view .LVU96
+ 363 019a 4FF00009 		mov	r9, #0
+ 364              	.LVL48:
+  99:Core/Src/main.c ****                 break;
+ 365              		.loc 1 99 30 view .LVU97
+ 366 019e D0E7     		b	.L15
+ 367              	.LVL49:
+ 368              	.L37:
+  98:Core/Src/main.c ****                 else {light3 = 0;}
+ 369              		.loc 1 98 34 is_stmt 1 discriminator 1 view .LVU98
+  98:Core/Src/main.c ****                 else {light3 = 0;}
+ 370              		.loc 1 98 40 is_stmt 0 discriminator 1 view .LVU99
+ 371 01a0 09F10109 		add	r9, r9, #1
+ 372              	.LVL50:
+  98:Core/Src/main.c ****                 else {light3 = 0;}
+ 373              		.loc 1 98 40 discriminator 1 view .LVU100
+ 374 01a4 CDE7     		b	.L15
+ 375              	.L19:
+ 102:Core/Src/main.c ****                 else {light4 = 0;}
+ 376              		.loc 1 102 17 is_stmt 1 view .LVU101
+ 102:Core/Src/main.c ****                 else {light4 = 0;}
+ 377              		.loc 1 102 20 is_stmt 0 view .LVU102
+ 378 01a6 BAF1010F 		cmp	r10, #1
+ 379 01aa 02D9     		bls	.L38
+ 103:Core/Src/main.c ****                 break; 
+ 380              		.loc 1 103 30 view .LVU103
+ 381 01ac 4FF0000A 		mov	r10, #0
+ 382              	.LVL51:
+ 103:Core/Src/main.c ****                 break; 
+ 383              		.loc 1 103 30 view .LVU104
+ 384 01b0 C7E7     		b	.L15
+ 385              	.LVL52:
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 11
+
+
+ 386              	.L38:
+ 102:Core/Src/main.c ****                 else {light4 = 0;}
+ 387              		.loc 1 102 34 is_stmt 1 discriminator 1 view .LVU105
+ 102:Core/Src/main.c ****                 else {light4 = 0;}
+ 388              		.loc 1 102 40 is_stmt 0 discriminator 1 view .LVU106
+ 389 01b2 0AF1010A 		add	r10, r10, #1
+ 390              	.LVL53:
+ 102:Core/Src/main.c ****                 else {light4 = 0;}
+ 391              		.loc 1 102 40 discriminator 1 view .LVU107
+ 392 01b6 C4E7     		b	.L15
+ 393              	.L18:
+ 106:Core/Src/main.c ****                 else {light5 = 0;}
+ 394              		.loc 1 106 17 is_stmt 1 view .LVU108
+ 106:Core/Src/main.c ****                 else {light5 = 0;}
+ 395              		.loc 1 106 20 is_stmt 0 view .LVU109
+ 396 01b8 BBF1010F 		cmp	fp, #1
+ 397 01bc 02D9     		bls	.L39
+ 107:Core/Src/main.c ****                 break; 
+ 398              		.loc 1 107 30 view .LVU110
+ 399 01be 4FF0000B 		mov	fp, #0
+ 400              	.LVL54:
+ 107:Core/Src/main.c ****                 break; 
+ 401              		.loc 1 107 30 view .LVU111
+ 402 01c2 BEE7     		b	.L15
+ 403              	.LVL55:
+ 404              	.L39:
+ 106:Core/Src/main.c ****                 else {light5 = 0;}
+ 405              		.loc 1 106 34 is_stmt 1 discriminator 1 view .LVU112
+ 106:Core/Src/main.c ****                 else {light5 = 0;}
+ 406              		.loc 1 106 40 is_stmt 0 discriminator 1 view .LVU113
+ 407 01c4 0BF1010B 		add	fp, fp, #1
+ 408              	.LVL56:
+ 106:Core/Src/main.c ****                 else {light5 = 0;}
+ 409              		.loc 1 106 40 discriminator 1 view .LVU114
+ 410 01c8 BBE7     		b	.L15
+ 411              	.L16:
+ 110:Core/Src/main.c ****                 else {light6 = 0;}
+ 412              		.loc 1 110 17 is_stmt 1 view .LVU115
+ 110:Core/Src/main.c ****                 else {light6 = 0;}
+ 413              		.loc 1 110 20 is_stmt 0 view .LVU116
+ 414 01ca 012F     		cmp	r7, #1
+ 415 01cc 01D9     		bls	.L40
+ 111:Core/Src/main.c ****                 break;  
+ 416              		.loc 1 111 30 view .LVU117
+ 417 01ce 0027     		movs	r7, #0
+ 418              	.LVL57:
+ 111:Core/Src/main.c ****                 break;  
+ 419              		.loc 1 111 30 view .LVU118
+ 420 01d0 B7E7     		b	.L15
+ 421              	.LVL58:
+ 422              	.L40:
+ 110:Core/Src/main.c ****                 else {light6 = 0;}
+ 423              		.loc 1 110 34 is_stmt 1 discriminator 1 view .LVU119
+ 110:Core/Src/main.c ****                 else {light6 = 0;}
+ 424              		.loc 1 110 40 is_stmt 0 discriminator 1 view .LVU120
+ 425 01d2 0137     		adds	r7, r7, #1
+ 426              	.LVL59:
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 12
+
+
+ 110:Core/Src/main.c ****                 else {light6 = 0;}
+ 427              		.loc 1 110 40 discriminator 1 view .LVU121
+ 428 01d4 B5E7     		b	.L15
+ 429              	.L24:
+  87:Core/Src/main.c ****             {
+ 430              		.loc 1 87 13 view .LVU122
+ 431 01d6 0025     		movs	r5, #0
+ 432              	.LVL60:
+  87:Core/Src/main.c ****             {
+ 433              		.loc 1 87 13 view .LVU123
+ 434 01d8 B3E7     		b	.L15
+ 435              	.L42:
+ 436 01da 00BF     		.align	2
+ 437              	.L41:
+ 438 01dc 00000240 		.word	1073872896
+ 439 01e0 00040240 		.word	1073873920
+ 440 01e4 00140240 		.word	1073878016
+ 441              		.cfi_endproc
+ 442              	.LFE130:
+ 444              		.text
+ 445              	.Letext0:
+ 446              		.file 2 "D:/Tools/SysGCC/arm-none-eabi/include/machine/_default_types.h"
+ 447              		.file 3 "D:/Tools/SysGCC/arm-none-eabi/include/sys/_stdint.h"
+ 448              		.file 4 "Core/Inc/../../CMSIS/Devices/STM32F4xx/Inc/STM32F429ZI/stm32f429xx.h"
+ 449              		.file 5 "Core/Inc/main.h"
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:21     .text.main:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:27     .text.main:00000000 main
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:146    .text.main:0000007e $d
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:153    .text.main:00000084 $t
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:322    .text.main:00000164 $d
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:329    .text.main:0000017c $t
+C:\Users\ilyak\AppData\Local\Temp\cc15T3vp.s:438    .text.main:000001dc $d
+
+UNDEFINED SYMBOLS
+GPIO_init_With_Myself_Macros
+GPIO_init_With_Myself_Macros2
+GPIO_init_With_Myself_Macros3
+GPIO_init_CMSIS
+delay
+TimeMerz
+CheckTimeButtonPress

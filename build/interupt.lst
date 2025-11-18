@@ -1,0 +1,144 @@
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"interupt.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/interupt.c"
+  20              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+  21              		.align	1
+  22              		.global	EXTI15_10_IRQHandler
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	EXTI15_10_IRQHandler:
+  28              	.LFB130:
+   1:Core/Src/interupt.c **** #include "interupt.h"
+   2:Core/Src/interupt.c **** 
+   3:Core/Src/interupt.c **** void EXTI15_10_IRQHandler(void)
+   4:Core/Src/interupt.c **** {
+  29              		.loc 1 4 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   5:Core/Src/interupt.c ****     SET_BIT(EXTI->PR, EXTI_PR_PR13);
+  34              		.loc 1 5 5 view .LVU1
+  35 0000 084A     		ldr	r2, .L2
+  36 0002 5369     		ldr	r3, [r2, #20]
+  37 0004 43F40053 		orr	r3, r3, #8192
+  38 0008 5361     		str	r3, [r2, #20]
+   6:Core/Src/interupt.c ****     btnCount++;
+  39              		.loc 1 6 5 view .LVU2
+  40              		.loc 1 6 13 is_stmt 0 view .LVU3
+  41 000a 074A     		ldr	r2, .L2+4
+  42 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  43 000e 0133     		adds	r3, r3, #1
+  44 0010 DBB2     		uxtb	r3, r3
+  45 0012 1370     		strb	r3, [r2]
+   7:Core/Src/interupt.c ****     flag = !flag;
+  46              		.loc 1 7 5 is_stmt 1 view .LVU4
+  47              		.loc 1 7 12 is_stmt 0 view .LVU5
+  48 0014 054A     		ldr	r2, .L2+8
+  49 0016 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  50 0018 B3FA83F3 		clz	r3, r3
+  51 001c 5B09     		lsrs	r3, r3, #5
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 2
+
+
+  52              		.loc 1 7 10 view .LVU6
+  53 001e 1370     		strb	r3, [r2]
+   8:Core/Src/interupt.c **** }
+  54              		.loc 1 8 1 view .LVU7
+  55 0020 7047     		bx	lr
+  56              	.L3:
+  57 0022 00BF     		.align	2
+  58              	.L2:
+  59 0024 003C0140 		.word	1073822720
+  60 0028 00000000 		.word	btnCount
+  61 002c 00000000 		.word	flag
+  62              		.cfi_endproc
+  63              	.LFE130:
+  65              		.section	.text.SysTick_Handler,"ax",%progbits
+  66              		.align	1
+  67              		.global	SysTick_Handler
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  72              	SysTick_Handler:
+  73              	.LFB131:
+   9:Core/Src/interupt.c **** 
+  10:Core/Src/interupt.c **** void SysTick_Handler(void)
+  11:Core/Src/interupt.c **** {
+  74              		.loc 1 11 1 is_stmt 1 view -0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  12:Core/Src/interupt.c ****     global_systick_tim_count++;
+  79              		.loc 1 12 5 view .LVU9
+  80              		.loc 1 12 29 is_stmt 0 view .LVU10
+  81 0000 054A     		ldr	r2, .L5
+  82 0002 1368     		ldr	r3, [r2]
+  83 0004 0133     		adds	r3, r3, #1
+  84 0006 1360     		str	r3, [r2]
+  13:Core/Src/interupt.c ****     global_delay_tim_count++;
+  85              		.loc 1 13 5 is_stmt 1 view .LVU11
+  86              		.loc 1 13 27 is_stmt 0 view .LVU12
+  87 0008 044A     		ldr	r2, .L5+4
+  88 000a 1388     		ldrh	r3, [r2]
+  89 000c 9BB2     		uxth	r3, r3
+  90 000e 0133     		adds	r3, r3, #1
+  91 0010 9BB2     		uxth	r3, r3
+  92 0012 1380     		strh	r3, [r2]	@ movhi
+  14:Core/Src/interupt.c **** }...
+  93              		.loc 1 14 1 view .LVU13
+  94 0014 7047     		bx	lr
+  95              	.L6:
+  96 0016 00BF     		.align	2
+  97              	.L5:
+  98 0018 00000000 		.word	global_systick_tim_count
+  99 001c 00000000 		.word	global_delay_tim_count
+ 100              		.cfi_endproc
+ 101              	.LFE131:
+ 103              		.text
+ 104              	.Letext0:
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 3
+
+
+ 105              		.file 2 "D:/Tools/SysGCC/arm-none-eabi/include/machine/_default_types.h"
+ 106              		.file 3 "D:/Tools/SysGCC/arm-none-eabi/include/sys/_stdint.h"
+ 107              		.file 4 "Core/Inc/../../CMSIS/Devices/STM32F4xx/Inc/STM32F429ZI/stm32f429xx.h"
+ 108              		.file 5 "Core/Inc/interupt.h"
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 interupt.c
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:21     .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:27     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:59     .text.EXTI15_10_IRQHandler:00000024 $d
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:66     .text.SysTick_Handler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:72     .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:98     .text.SysTick_Handler:00000018 $d
+
+UNDEFINED SYMBOLS
+btnCount
+flag
+global_systick_tim_count
+global_delay_tim_count
