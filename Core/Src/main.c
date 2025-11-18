@@ -20,7 +20,7 @@ int main(void)
     GPIO_init_CMSIS ();
     while (1)
     {
-        //Основное задание вариан 4
+        //Основное задание вариант 4
         // non control button 1
         if (BIT_READ(GPIOA_IDR, GPIO_PIN_IDR_3)) // Если поступила единица на РА3(А0)
         {
@@ -43,25 +43,17 @@ int main(void)
             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7); // Выключает Синий
         }
         // control button 3 A2
-        if (GPIOC->MODER == 0x00000000)
+        if (BIT_READ(GPIOC_IDR, GPIO_PIN_IDR_3)) // Если нажата 3я кнопка A2 и "на вход", то True
         {
-            if (BIT_READ(GPIOC_IDR, GPIO_PIN_IDR_3)) // Если нажата 3я кнопка A2 и "на вход", то True
-            {
-                SET_BIT(GPIOB->BSRR, GPIO_BSRR_BS0); //Желтый
-            }
-            else
-            {
-                SET_BIT(GPIOB->BSRR, GPIO_BSRR_BR0); //Желтый
-            }
+            SET_BIT(GPIOB->BSRR, GPIO_BSRR_BS0); //Желтый
         }
-        else if (GPIOC->MODER == 0x55555555)
-        {
-            BIT_SET(GPIOC_BSRR, GPIO_PIN_SET_3); // Включает "свой" светодиот
-        }          
         else
         {
-            BIT_SET(GPIOC_BSRR, GPIO_PIN_RESET_3);  
-        }  
+            SET_BIT(GPIOB->BSRR, GPIO_BSRR_BR0); //Желтый
+        }
+        BIT_SET(GPIOC_BSRR, GPIO_PIN_SET_3); // Включает "свой" светодиот
+                  
+        
 
 // Дополнительное задание
 /*

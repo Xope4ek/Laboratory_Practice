@@ -1,16 +1,13 @@
 
 #include "main.h"
 
-void GPIO_init__Memory(void){};
-
-// Здесь должно быть включение через регистры (хардкод) синий светодиот
-void GPIO_init_With_Myself_Macros (void)
+void GPIO_init__Memory(void)
 {
-    RCC_AHB1ENR |= RCC_GPIOA_EN | RCC_GPIOB_EN | RCC_GPIOC_EN;
-    BIT_SET(GPIOB_MODER, GPIO_PIN_OUT_7);
-    BIT_SET(GPIOB_OTYPER, GPIO_OFF);
-    BIT_SET(GPIOB_OSPEEDR, GPIO_PIN_MED_7);
-    BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7);
+    *(uint32_t *)(0x40023800UL + 0x30UL) |= 0x01UL;
+    *(uint32_t *)(0x40020400UL + 0x00UL) |= 0x04000UL;
+    *(uint32_t *)(0x40020400UL + 0x04UL) |= 0x00UL;
+    *(uint32_t *)(0x40020400UL + 0x08UL) |= 0x4000UL;
+    *(uint32_t *)(0x40020400UL + 0x18UL) |= 0x800000UL;
 }
 
 // Включение через макроссы красный светодиот
@@ -32,12 +29,6 @@ void GPIO_init_With_Myself_Macros3 (void)
     BIT_SET(GPIOA_OTYPER, GPIO_OFF);
     BIT_SET(GPIOA_OSPEEDR, GPIO_PIN_MED_3);
     BIT_SET(GPIOA_BSRR, GPIO_PIN_RESET_3);
-
-    //PC0 A1
-/*     BIT_SET(GPIOC_MODER, GPIO_PIN_IN_0);
-    BIT_SET(GPIOC_OTYPER, GPIO_OFF);
-    BIT_SET(GPIOC_OSPEEDR, GPIO_PIN_MED_0);
-    BIT_SET(GPIOC_BSRR, GPIO_PIN_RESET_0); */
 
     //PC3
     BIT_SET(GPIOC_MODER, GPIO_PIN_IN_3);
