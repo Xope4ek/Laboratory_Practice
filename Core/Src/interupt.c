@@ -1,14 +1,47 @@
 #include "interupt.h"
 
+volatile uint8_t button1_pressed_flag = 0;
+volatile uint8_t button2_press_event_flag = 0;
+volatile uint8_t button3_press_event_flag = 0;
+
+volatile uint32_t system_time_ms = 0;
+
+volatile uint8_t led1_state = 0;
+volatile uint8_t led2_state = 0;
+volatile uint8_t led3_state = 0;
+volatile uint8_t led4_state = 0;
+volatile uint8_t led5_state = 0;
+volatile uint8_t led6_state = 0;
+
+// PC0
+void EXTI0_IRQHandler(void)
+{
+    if(EXTI->PR & EXTI_PR_PR0)
+    {
+        button1_pressed_flag = 1;
+        EXTI->PR = EXTI_PR_PR0;
+    }
+}
+//PF5
+void EXTI9_5_IRQHandler(void)
+{
+    if(EXTI->PR & EXTI_PR_PR5)
+    {
+        button2_press_event_flag = 1;
+        EXTI->PR = EXTI_PR_PR5;
+    }
+}
+//PF13
 void EXTI15_10_IRQHandler(void)
 {
-    SET_BIT(EXTI->PR, EXTI_PR_PR13);
-    btnCount++;
-    flag = !flag;
+    if(EXTI->PR & EXTI_PR_PR13)
+    {
+        button3_press_event_flag = 1;
+        EXTI->PR = EXTI_PR_PR13;
+    }
 }
 
 void SysTick_Handler(void)
 {
-    global_systick_tim_count++;
-    global_delay_tim_count++;
+    system_time_ms++;
 }

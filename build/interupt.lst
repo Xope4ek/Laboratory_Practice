@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 1
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -20,125 +20,295 @@ ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Core/Src/interupt.c"
-  20              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+  20              		.section	.text.EXTI0_IRQHandler,"ax",%progbits
   21              		.align	1
-  22              		.global	EXTI15_10_IRQHandler
+  22              		.global	EXTI0_IRQHandler
   23              		.syntax unified
   24              		.thumb
   25              		.thumb_func
-  27              	EXTI15_10_IRQHandler:
+  27              	EXTI0_IRQHandler:
   28              	.LFB130:
    1:Core/Src/interupt.c **** #include "interupt.h"
    2:Core/Src/interupt.c **** 
-   3:Core/Src/interupt.c **** void EXTI15_10_IRQHandler(void)
-   4:Core/Src/interupt.c **** {
-  29              		.loc 1 4 1 view -0
+   3:Core/Src/interupt.c **** volatile uint8_t button1_pressed_flag = 0;
+   4:Core/Src/interupt.c **** volatile uint8_t button2_press_event_flag = 0;
+   5:Core/Src/interupt.c **** volatile uint8_t button3_press_event_flag = 0;
+   6:Core/Src/interupt.c **** 
+   7:Core/Src/interupt.c **** volatile uint32_t system_time_ms = 0;
+   8:Core/Src/interupt.c **** 
+   9:Core/Src/interupt.c **** volatile uint8_t led1_state = 0;
+  10:Core/Src/interupt.c **** volatile uint8_t led2_state = 0;
+  11:Core/Src/interupt.c **** volatile uint8_t led3_state = 0;
+  12:Core/Src/interupt.c **** volatile uint8_t led4_state = 0;
+  13:Core/Src/interupt.c **** volatile uint8_t led5_state = 0;
+  14:Core/Src/interupt.c **** volatile uint8_t led6_state = 0;
+  15:Core/Src/interupt.c **** 
+  16:Core/Src/interupt.c **** // PC0
+  17:Core/Src/interupt.c **** void EXTI0_IRQHandler(void)
+  18:Core/Src/interupt.c **** {
+  29              		.loc 1 18 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-   5:Core/Src/interupt.c ****     SET_BIT(EXTI->PR, EXTI_PR_PR13);
-  34              		.loc 1 5 5 view .LVU1
-  35 0000 084A     		ldr	r2, .L2
-  36 0002 5369     		ldr	r3, [r2, #20]
-  37 0004 43F40053 		orr	r3, r3, #8192
-  38 0008 5361     		str	r3, [r2, #20]
-   6:Core/Src/interupt.c ****     btnCount++;
-  39              		.loc 1 6 5 view .LVU2
-  40              		.loc 1 6 13 is_stmt 0 view .LVU3
-  41 000a 074A     		ldr	r2, .L2+4
-  42 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  43 000e 0133     		adds	r3, r3, #1
-  44 0010 DBB2     		uxtb	r3, r3
-  45 0012 1370     		strb	r3, [r2]
-   7:Core/Src/interupt.c ****     flag = !flag;
-  46              		.loc 1 7 5 is_stmt 1 view .LVU4
-  47              		.loc 1 7 12 is_stmt 0 view .LVU5
-  48 0014 054A     		ldr	r2, .L2+8
-  49 0016 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
-  50 0018 B3FA83F3 		clz	r3, r3
-  51 001c 5B09     		lsrs	r3, r3, #5
-ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 2
+  19:Core/Src/interupt.c ****     if(EXTI->PR & EXTI_PR_PR0)
+  34              		.loc 1 19 5 view .LVU1
+  35              		.loc 1 19 12 is_stmt 0 view .LVU2
+  36 0000 054B     		ldr	r3, .L3
+  37 0002 5B69     		ldr	r3, [r3, #20]
+  38              		.loc 1 19 7 view .LVU3
+  39 0004 13F0010F 		tst	r3, #1
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 2
 
 
-  52              		.loc 1 7 10 view .LVU6
-  53 001e 1370     		strb	r3, [r2]
-   8:Core/Src/interupt.c **** }
-  54              		.loc 1 8 1 view .LVU7
-  55 0020 7047     		bx	lr
-  56              	.L3:
-  57 0022 00BF     		.align	2
-  58              	.L2:
-  59 0024 003C0140 		.word	1073822720
-  60 0028 00000000 		.word	btnCount
-  61 002c 00000000 		.word	flag
-  62              		.cfi_endproc
-  63              	.LFE130:
-  65              		.section	.text.SysTick_Handler,"ax",%progbits
-  66              		.align	1
-  67              		.global	SysTick_Handler
-  68              		.syntax unified
-  69              		.thumb
-  70              		.thumb_func
-  72              	SysTick_Handler:
-  73              	.LFB131:
-   9:Core/Src/interupt.c **** 
-  10:Core/Src/interupt.c **** void SysTick_Handler(void)
-  11:Core/Src/interupt.c **** {
-  74              		.loc 1 11 1 is_stmt 1 view -0
-  75              		.cfi_startproc
-  76              		@ args = 0, pretend = 0, frame = 0
-  77              		@ frame_needed = 0, uses_anonymous_args = 0
-  78              		@ link register save eliminated.
-  12:Core/Src/interupt.c ****     global_systick_tim_count++;
-  79              		.loc 1 12 5 view .LVU9
-  80              		.loc 1 12 29 is_stmt 0 view .LVU10
-  81 0000 054A     		ldr	r2, .L5
-  82 0002 1368     		ldr	r3, [r2]
-  83 0004 0133     		adds	r3, r3, #1
-  84 0006 1360     		str	r3, [r2]
-  13:Core/Src/interupt.c ****     global_delay_tim_count++;
-  85              		.loc 1 13 5 is_stmt 1 view .LVU11
-  86              		.loc 1 13 27 is_stmt 0 view .LVU12
-  87 0008 044A     		ldr	r2, .L5+4
-  88 000a 1388     		ldrh	r3, [r2]
-  89 000c 9BB2     		uxth	r3, r3
-  90 000e 0133     		adds	r3, r3, #1
-  91 0010 9BB2     		uxth	r3, r3
-  92 0012 1380     		strh	r3, [r2]	@ movhi
-  14:Core/Src/interupt.c **** }...
-  93              		.loc 1 14 1 view .LVU13
-  94 0014 7047     		bx	lr
-  95              	.L6:
-  96 0016 00BF     		.align	2
-  97              	.L5:
-  98 0018 00000000 		.word	global_systick_tim_count
-  99 001c 00000000 		.word	global_delay_tim_count
+  40 0008 04D0     		beq	.L1
+  20:Core/Src/interupt.c ****     {
+  21:Core/Src/interupt.c ****         button1_pressed_flag = 1;
+  41              		.loc 1 21 9 is_stmt 1 view .LVU4
+  42              		.loc 1 21 30 is_stmt 0 view .LVU5
+  43 000a 0123     		movs	r3, #1
+  44 000c 034A     		ldr	r2, .L3+4
+  45 000e 1370     		strb	r3, [r2]
+  22:Core/Src/interupt.c ****         EXTI->PR = EXTI_PR_PR0;
+  46              		.loc 1 22 9 is_stmt 1 view .LVU6
+  47              		.loc 1 22 18 is_stmt 0 view .LVU7
+  48 0010 014A     		ldr	r2, .L3
+  49 0012 5361     		str	r3, [r2, #20]
+  50              	.L1:
+  23:Core/Src/interupt.c ****     }
+  24:Core/Src/interupt.c **** }
+  51              		.loc 1 24 1 view .LVU8
+  52 0014 7047     		bx	lr
+  53              	.L4:
+  54 0016 00BF     		.align	2
+  55              	.L3:
+  56 0018 003C0140 		.word	1073822720
+  57 001c 00000000 		.word	button1_pressed_flag
+  58              		.cfi_endproc
+  59              	.LFE130:
+  61              		.section	.text.EXTI9_5_IRQHandler,"ax",%progbits
+  62              		.align	1
+  63              		.global	EXTI9_5_IRQHandler
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  68              	EXTI9_5_IRQHandler:
+  69              	.LFB131:
+  25:Core/Src/interupt.c **** //PF5
+  26:Core/Src/interupt.c **** void EXTI9_5_IRQHandler(void)
+  27:Core/Src/interupt.c **** {
+  70              		.loc 1 27 1 is_stmt 1 view -0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  28:Core/Src/interupt.c ****     if(EXTI->PR & EXTI_PR_PR5)
+  75              		.loc 1 28 5 view .LVU10
+  76              		.loc 1 28 12 is_stmt 0 view .LVU11
+  77 0000 054B     		ldr	r3, .L7
+  78 0002 5B69     		ldr	r3, [r3, #20]
+  79              		.loc 1 28 7 view .LVU12
+  80 0004 13F0200F 		tst	r3, #32
+  81 0008 05D0     		beq	.L5
+  29:Core/Src/interupt.c ****     {
+  30:Core/Src/interupt.c ****         button2_press_event_flag = 1;
+  82              		.loc 1 30 9 is_stmt 1 view .LVU13
+  83              		.loc 1 30 34 is_stmt 0 view .LVU14
+  84 000a 044B     		ldr	r3, .L7+4
+  85 000c 0122     		movs	r2, #1
+  86 000e 1A70     		strb	r2, [r3]
+  31:Core/Src/interupt.c ****         EXTI->PR = EXTI_PR_PR5;
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 3
+
+
+  87              		.loc 1 31 9 is_stmt 1 view .LVU15
+  88              		.loc 1 31 18 is_stmt 0 view .LVU16
+  89 0010 014B     		ldr	r3, .L7
+  90 0012 2022     		movs	r2, #32
+  91 0014 5A61     		str	r2, [r3, #20]
+  92              	.L5:
+  32:Core/Src/interupt.c ****     }
+  33:Core/Src/interupt.c **** }
+  93              		.loc 1 33 1 view .LVU17
+  94 0016 7047     		bx	lr
+  95              	.L8:
+  96              		.align	2
+  97              	.L7:
+  98 0018 003C0140 		.word	1073822720
+  99 001c 00000000 		.word	button2_press_event_flag
  100              		.cfi_endproc
  101              	.LFE131:
- 103              		.text
- 104              	.Letext0:
-ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 3
+ 103              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	EXTI15_10_IRQHandler
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	EXTI15_10_IRQHandler:
+ 111              	.LFB132:
+  34:Core/Src/interupt.c **** //PF13
+  35:Core/Src/interupt.c **** void EXTI15_10_IRQHandler(void)
+  36:Core/Src/interupt.c **** {
+ 112              		.loc 1 36 1 is_stmt 1 view -0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              		@ link register save eliminated.
+  37:Core/Src/interupt.c ****     if(EXTI->PR & EXTI_PR_PR13)
+ 117              		.loc 1 37 5 view .LVU19
+ 118              		.loc 1 37 12 is_stmt 0 view .LVU20
+ 119 0000 064B     		ldr	r3, .L11
+ 120 0002 5B69     		ldr	r3, [r3, #20]
+ 121              		.loc 1 37 7 view .LVU21
+ 122 0004 13F4005F 		tst	r3, #8192
+ 123 0008 06D0     		beq	.L9
+  38:Core/Src/interupt.c ****     {
+  39:Core/Src/interupt.c ****         button3_press_event_flag = 1;
+ 124              		.loc 1 39 9 is_stmt 1 view .LVU22
+ 125              		.loc 1 39 34 is_stmt 0 view .LVU23
+ 126 000a 054B     		ldr	r3, .L11+4
+ 127 000c 0122     		movs	r2, #1
+ 128 000e 1A70     		strb	r2, [r3]
+  40:Core/Src/interupt.c ****         EXTI->PR = EXTI_PR_PR13;
+ 129              		.loc 1 40 9 is_stmt 1 view .LVU24
+ 130              		.loc 1 40 18 is_stmt 0 view .LVU25
+ 131 0010 024B     		ldr	r3, .L11
+ 132 0012 4FF40052 		mov	r2, #8192
+ 133 0016 5A61     		str	r2, [r3, #20]
+ 134              	.L9:
+  41:Core/Src/interupt.c ****     }
+  42:Core/Src/interupt.c **** }
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 4
 
 
- 105              		.file 2 "D:/Tools/SysGCC/arm-none-eabi/include/machine/_default_types.h"
- 106              		.file 3 "D:/Tools/SysGCC/arm-none-eabi/include/sys/_stdint.h"
- 107              		.file 4 "Core/Inc/../../CMSIS/Devices/STM32F4xx/Inc/STM32F429ZI/stm32f429xx.h"
- 108              		.file 5 "Core/Inc/interupt.h"
-ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s 			page 4
+ 135              		.loc 1 42 1 view .LVU26
+ 136 0018 7047     		bx	lr
+ 137              	.L12:
+ 138 001a 00BF     		.align	2
+ 139              	.L11:
+ 140 001c 003C0140 		.word	1073822720
+ 141 0020 00000000 		.word	button3_press_event_flag
+ 142              		.cfi_endproc
+ 143              	.LFE132:
+ 145              		.section	.text.SysTick_Handler,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	SysTick_Handler
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 152              	SysTick_Handler:
+ 153              	.LFB133:
+  43:Core/Src/interupt.c **** 
+  44:Core/Src/interupt.c **** void SysTick_Handler(void)
+  45:Core/Src/interupt.c **** {
+ 154              		.loc 1 45 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+  46:Core/Src/interupt.c ****     system_time_ms++;
+ 159              		.loc 1 46 5 view .LVU28
+ 160              		.loc 1 46 19 is_stmt 0 view .LVU29
+ 161 0000 024A     		ldr	r2, .L14
+ 162 0002 1368     		ldr	r3, [r2]
+ 163 0004 0133     		adds	r3, r3, #1
+ 164 0006 1360     		str	r3, [r2]
+  47:Core/Src/interupt.c **** }...
+ 165              		.loc 1 47 1 view .LVU30
+ 166 0008 7047     		bx	lr
+ 167              	.L15:
+ 168 000a 00BF     		.align	2
+ 169              	.L14:
+ 170 000c 00000000 		.word	system_time_ms
+ 171              		.cfi_endproc
+ 172              	.LFE133:
+ 174              		.global	led6_state
+ 175              		.section	.bss.led6_state,"aw",%nobits
+ 178              	led6_state:
+ 179 0000 00       		.space	1
+ 180              		.global	led5_state
+ 181              		.section	.bss.led5_state,"aw",%nobits
+ 184              	led5_state:
+ 185 0000 00       		.space	1
+ 186              		.global	led4_state
+ 187              		.section	.bss.led4_state,"aw",%nobits
+ 190              	led4_state:
+ 191 0000 00       		.space	1
+ 192              		.global	led3_state
+ 193              		.section	.bss.led3_state,"aw",%nobits
+ 196              	led3_state:
+ 197 0000 00       		.space	1
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 5
+
+
+ 198              		.global	led2_state
+ 199              		.section	.bss.led2_state,"aw",%nobits
+ 202              	led2_state:
+ 203 0000 00       		.space	1
+ 204              		.global	led1_state
+ 205              		.section	.bss.led1_state,"aw",%nobits
+ 208              	led1_state:
+ 209 0000 00       		.space	1
+ 210              		.global	system_time_ms
+ 211              		.section	.bss.system_time_ms,"aw",%nobits
+ 212              		.align	2
+ 215              	system_time_ms:
+ 216 0000 00000000 		.space	4
+ 217              		.global	button3_press_event_flag
+ 218              		.section	.bss.button3_press_event_flag,"aw",%nobits
+ 221              	button3_press_event_flag:
+ 222 0000 00       		.space	1
+ 223              		.global	button2_press_event_flag
+ 224              		.section	.bss.button2_press_event_flag,"aw",%nobits
+ 227              	button2_press_event_flag:
+ 228 0000 00       		.space	1
+ 229              		.global	button1_pressed_flag
+ 230              		.section	.bss.button1_pressed_flag,"aw",%nobits
+ 233              	button1_pressed_flag:
+ 234 0000 00       		.space	1
+ 235              		.text
+ 236              	.Letext0:
+ 237              		.file 2 "D:/Tools/SysGCC/arm-none-eabi/include/machine/_default_types.h"
+ 238              		.file 3 "D:/Tools/SysGCC/arm-none-eabi/include/sys/_stdint.h"
+ 239              		.file 4 "Core/Inc/../../CMSIS/Devices/STM32F4xx/Inc/STM32F429ZI/stm32f429xx.h"
+ 240              		.file 5 "Core/Inc/main.h"
+ 241              		.file 6 "Core/Inc/interupt.h"
+ARM GAS  C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 interupt.c
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:21     .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:27     .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:59     .text.EXTI15_10_IRQHandler:00000024 $d
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:66     .text.SysTick_Handler:00000000 $t
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:72     .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\ilyak\AppData\Local\Temp\ccTFnj2J.s:98     .text.SysTick_Handler:00000018 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:21     .text.EXTI0_IRQHandler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:27     .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:56     .text.EXTI0_IRQHandler:00000018 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:233    .bss.button1_pressed_flag:00000000 button1_pressed_flag
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:62     .text.EXTI9_5_IRQHandler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:68     .text.EXTI9_5_IRQHandler:00000000 EXTI9_5_IRQHandler
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:98     .text.EXTI9_5_IRQHandler:00000018 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:227    .bss.button2_press_event_flag:00000000 button2_press_event_flag
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:104    .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:110    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:140    .text.EXTI15_10_IRQHandler:0000001c $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:221    .bss.button3_press_event_flag:00000000 button3_press_event_flag
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:146    .text.SysTick_Handler:00000000 $t
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:152    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:170    .text.SysTick_Handler:0000000c $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:215    .bss.system_time_ms:00000000 system_time_ms
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:178    .bss.led6_state:00000000 led6_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:179    .bss.led6_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:184    .bss.led5_state:00000000 led5_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:185    .bss.led5_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:190    .bss.led4_state:00000000 led4_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:191    .bss.led4_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:196    .bss.led3_state:00000000 led3_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:197    .bss.led3_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:202    .bss.led2_state:00000000 led2_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:203    .bss.led2_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:208    .bss.led1_state:00000000 led1_state
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:209    .bss.led1_state:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:212    .bss.system_time_ms:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:222    .bss.button3_press_event_flag:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:228    .bss.button2_press_event_flag:00000000 $d
+C:\Users\ilyak\AppData\Local\Temp\ccVb0mFo.s:234    .bss.button1_pressed_flag:00000000 $d
 
-UNDEFINED SYMBOLS
-btnCount
-flag
-global_systick_tim_count
-global_delay_tim_count
+NO UNDEFINED SYMBOLS

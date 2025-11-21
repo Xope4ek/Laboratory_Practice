@@ -39,6 +39,7 @@ C_SOURCES =  \
 CMSIS/Devices/STM32F4xx/Src/system_stm32f4xx.c \
 Core/Src/main.c \
 Core/Src/init.c \
+Core/Src/interupt.c \
 
 # ASM sources
 ASM_SOURCES =  \
