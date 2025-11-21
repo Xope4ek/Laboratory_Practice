@@ -40,7 +40,6 @@ void EXTI15_10_IRQHandler(void)
         EXTI->PR = EXTI_PR_PR13;
     }
 }
-
 void SysTick_Handler(void)
 {
     system_time_ms++;

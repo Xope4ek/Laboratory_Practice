@@ -1,6 +1,7 @@
 
 #include "main.h"
 
+
 void GPIO_init_CMSIS(void)
 {
     SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOCEN | RCC_AHB1ENR_GPIOFEN);
